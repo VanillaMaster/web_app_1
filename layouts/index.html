@@ -1,0 +1,178 @@
+<layout-container path="/">
+
+    <layout-view name="home" active>
+        <div class="home">
+
+            <container-ripple class="large-btn2">
+                <button onclick="window.router.goto('/settings/')">
+                    <span>next layout</span>
+                </button>
+            </container-ripple>
+            
+
+            <container-ripple class="btn2" ripple-type="">
+                <button onclick="">
+                    <svg><use href="#searchIcon"></use></svg>
+                </button>
+            </container-ripple>
+
+        </div>
+    </layout-view>
+
+    <layout-view name="settings">
+        <span>layout 1-2</span>
+        <br>
+        theme:
+        <select id="theme-select" onchange="document.documentElement.setAttribute('theme',event.target.value)">
+            <option value="white" selected>white</option>
+            <option value="black">black</option>
+        </select>
+    </layout-view>
+
+    <layout-view name="smth">
+        <span>layout 1-3</span>
+
+        <div style="height: 75vh;"></div>
+
+        <container-ripple ripple-type="circumcircle" isolation="no" class="popupmenu">
+            <menu-container onrippleclick="this.togglePopUp();" priority-order="3 4">
+                <svg slot="icon"><use href="#moreIcon"></use></svg>
+                <container-ripple><span>option "Lorem"</span></container-ripple>
+                <container-ripple><span>option "ipsum"</span></container-ripple>
+                <container-ripple><span>option "dolor"</span></container-ripple>
+                <container-ripple><span>option "sit"</span></container-ripple>
+                <container-ripple><span>option "amet"</span></container-ripple>
+                <container-ripple><span>option "consectetur"</span></container-ripple>
+            </menu-container>
+        </container-ripple>
+
+        <div class="list">
+
+            <container-ripple class="list-item-wrapper">
+                <list-view-item onripplehold="this.toggleSelection();">
+                    <h1 class="title">Title</h1>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non ex animi cupiditate vitae in est, sapiente, tempore consequuntur autem praesentium soluta commodi maiores esse quas sed! Alias, molestiae est!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non ex animi cupiditate vitae in est, sapiente, tempore consequuntur autem praesentium soluta commodi maiores esse quas sed! Alias, molestiae est!
+                    </div>
+
+                    <div slot="icon" class="icon">
+                        <img class="default" src="https://VanillaMaster.github.io/placeholder_image.png">
+                        <svg class="selected" ><use href="#ok"></use></svg>
+                    </div>
+                    <container-ripple slot="controll" style="pointer-events: all;" onpointerdown="event.stopPropagation();" ripple-type="circumcircle" class="popupmenu">
+                        <menu-container onrippleclick="this.togglePopUp();" priority-order="3 4">
+                            <svg slot="icon"><use href="#moreIcon"></use></svg>
+                            <container-ripple><span>option "Lorem"</span></container-ripple>
+                            <container-ripple><span>option "ipsum"</span></container-ripple>
+                            <container-ripple><span>option "dolor"</span></container-ripple>
+                            <container-ripple><span>option "sit"</span></container-ripple>
+                            <container-ripple><span>option "amet"</span></container-ripple>
+                            <container-ripple><span>option "consectetur"</span></container-ripple>
+                        </menu-container>
+                    </container-ripple>
+                </list-view-item>
+            </container-ripple>
+            
+            <container-ripple class="list-item-wrapper">
+                <list-view-item onripplehold="this.toggleSelection();">
+                    <h1 class="title">Title</h1>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non ex animi cupiditate vitae in est, sapiente, tempore consequuntur autem praesentium soluta commodi maiores esse quas sed! Alias, molestiae est!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non ex animi cupiditate vitae in est, sapiente, tempore consequuntur autem praesentium soluta commodi maiores esse quas sed! Alias, molestiae est!
+                    </div>
+
+                    <div slot="icon" class="icon">
+                        <img class="default" src="https://VanillaMaster.github.io/placeholder_image.png">
+                        <svg class="selected" ><use href="#ok"></use></svg>
+                    </div>
+                    <button slot="controll" style="pointer-events: all;" onpointerdown="event.stopPropagation();">btn</button>
+                </list-view-item>
+            </container-ripple>
+
+            <container-ripple class="list-item-wrapper">
+                <list-view-item onripplehold="this.toggleSelection();">
+                    <h1 class="title">Title</h1>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non ex animi cupiditate vitae in est, sapiente, tempore consequuntur autem praesentium soluta commodi maiores esse quas sed! Alias, molestiae est!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non ex animi cupiditate vitae in est, sapiente, tempore consequuntur autem praesentium soluta commodi maiores esse quas sed! Alias, molestiae est!
+                    </div>
+
+                    <div slot="icon" class="icon">
+                        <img class="default" src="https://VanillaMaster.github.io/placeholder_image.png">
+                        <svg class="selected" ><use href="#ok"></use></svg>
+                    </div>
+                    <button slot="controll" style="pointer-events: all;" onpointerdown="event.stopPropagation();">btn</button>
+                </list-view-item>
+            </container-ripple>
+
+            <container-ripple class="list-item-wrapper">
+                <list-view-item onripplehold="this.toggleSelection();">
+                    <h1 class="title">Title</h1>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non ex animi cupiditate vitae in est, sapiente, tempore consequuntur autem praesentium soluta commodi maiores esse quas sed! Alias, molestiae est!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non ex animi cupiditate vitae in est, sapiente, tempore consequuntur autem praesentium soluta commodi maiores esse quas sed! Alias, molestiae est!
+                    </div>
+
+                    <div slot="icon" class="icon">
+                        <img class="default" src="https://VanillaMaster.github.io/placeholder_image.png">
+                        <svg class="selected" ><use href="#ok"></use></svg>
+                    </div>
+                    <button slot="controll" style="pointer-events: all;" onpointerdown="event.stopPropagation();">btn</button>
+                </list-view-item>
+            </container-ripple>
+
+            <container-ripple class="list-item-wrapper">
+                <list-view-item onripplehold="this.toggleSelection();">
+                    <h1 class="title">Title</h1>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non ex animi cupiditate vitae in est, sapiente, tempore consequuntur autem praesentium soluta commodi maiores esse quas sed! Alias, molestiae est!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non ex animi cupiditate vitae in est, sapiente, tempore consequuntur autem praesentium soluta commodi maiores esse quas sed! Alias, molestiae est!
+                    </div>
+
+                    <div slot="icon" class="icon">
+                        <img class="default" src="https://VanillaMaster.github.io/placeholder_image.png">
+                        <svg class="selected" ><use href="#ok"></use></svg>
+                    </div>
+                    <button slot="controll" style="pointer-events: all;" onpointerdown="event.stopPropagation();">btn</button>
+                </list-view-item>
+            </container-ripple>
+
+            
+        </div>
+
+    </layout-view>
+
+    <nav slot="controll-bottom" class="nav-bar">
+
+        <container-ripple ripple-type="circumcircle">
+            <button is="nav-button" onclick="this.layoutContainer.showView('home')">
+                <span>asd</span>
+            </button>
+        </container-ripple>
+
+        <container-ripple ripple-type="circumcircle">
+            <button is="nav-button" onclick="this.layoutContainer.showView('settings')">
+                <span>asd</span>
+            </button>
+        </container-ripple>
+
+        <container-ripple ripple-type="circumcircle">
+            <button is="nav-button" onclick="this.layoutContainer.showView('smth')">
+                <span>asd</span>
+            </button>
+        </container-ripple>
+
+    </nav>
+
+</layout-container>

@@ -1,0 +1,99 @@
+
+.ripple{
+  touch-action: none;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+[slot=effect-ripple],
+.effect-ripple{
+  --size: 0;
+  position: absolute;
+  
+  top: var(--y);
+  left: var(--x);
+  
+  aspect-ratio: 1/1;
+  min-height: 200%;
+  min-width: 200%;
+
+  border-radius: 100%;
+  
+  transform: translate(-50%,-50%);
+  
+  pointer-events: none;
+  z-index: -1;
+
+  transition: opacity var(--ripple-fadeout);
+}
+
+[slot=effect-ripple]::after,
+.effect-ripple::after{
+  height: 100%;
+  width: 100%;
+  content: "";
+  display: block;
+  border-radius: 100vmax;
+
+  inset: 0;
+  margin: auto;
+  position: absolute;
+  
+  
+  animation-name: ripple;
+  animation-duration: var(--ripple-speed);
+  animation-timing-function: linear;
+  
+
+  background-color: var(--ripple-color);
+}
+
+[slot=effect-ripple][disappearing],
+.effect-ripple[disappearing]{
+  opacity: 0;
+}
+
+.ripple-hitbox{
+  touch-action: none;
+  pointer-events: all;
+}
+
+
+@keyframes ripple {
+  from {
+    height: 0;
+    width: 0;
+
+    opacity: 0;
+  }
+
+  5%{
+    opacity: 1;
+  }
+
+  to {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@keyframes ripple_2 {
+  from {
+    background-position: center;
+    background: radial-gradient(circle, var(--ripple-color) 1%, transparent 1%) center;
+    background-size: 0;
+
+    opacity: 0;
+  }
+
+  5%{
+    opacity: 1;
+  }
+
+  to {
+    background-position: center;
+    background: radial-gradient(circle, var(--ripple-color) 1%, transparent 1%) center;
+    background-size: calc(10000% * 1.415); /* sqrt of 2*/
+  }
+}

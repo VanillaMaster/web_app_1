@@ -1,0 +1,46 @@
+:host{
+    padding: 0.5em;
+    display: block;
+}
+
+:host([selected])::before{
+    content: "";
+    z-index: -1;
+    background-color: var(--select-color);
+    position: absolute;
+    inset: 0;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.right,
+.left{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.left{
+    pointer-events: all;
+    touch-action: pan-y;
+}
+
+.left *{
+    pointer-events: none;
+}
+
+.middle{
+    width: 100%;
+    overflow: hidden;
+    padding: 0 0.5em;
+}
+
+.default-img{
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 3em;
+}

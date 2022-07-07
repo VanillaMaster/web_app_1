@@ -1,0 +1,92 @@
+.view{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+:host([unscrolable]) .view{
+    overflow-y: hidden;
+}
+
+.content-wrapper{
+    min-height: 100%;
+    position: relative;
+}
+
+:host([scrolling]) .content-wrapper::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--touch-prevent-layer-color,transparent);
+}
+
+:host{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: none;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    animation-duration: var(--view-transitions-animation-duration);
+}
+
+:host([active]) {
+    display: block;
+}
+
+:host(.appearing-grow)::after,
+:host(.disappearing-shrink)::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--touch-prevent-layer-color,transparent);
+}
+
+
+:host(.disappearing-shrink){
+    display: block;
+}
+
+:host(.appearing-grow){
+    animation-name: appearing-grow;
+}
+:host(.disappearing-shrink){
+    animation-name: disappearing-shrink;
+}
+
+@keyframes appearing-grow {
+    from {
+        transform: scale(calc(1 - var(--view-transitions-animation-delta-grow)));
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes disappearing-shrink {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    75% {
+        opacity: 0;
+    }
+    to {
+        transform: scale(calc(1 - var(--view-transitions-animation-delta-grow)));
+        opacity: 0;
+    }
+}

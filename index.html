@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" theme="white">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="manifest" href="/manifest/manifest.webmanifest">
+    <meta name="theme-color" content="#f69435"/>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./layout.css">
+    <link rel="stylesheet" href="./themes.css">
+    
+    <script src="./src/router.js"></script>
+
+    <script type="module" src="/elements/index.js"></script>
+
+</head>
+<body>
+
+    <app-container id="app"></app-container>
+
+    <svg class="svgTempaltes">
+        <symbol id="searchIcon" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </symbol>
+        <symbol id="backIcon" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"/>
+        </symbol>
+        <symbol id="ok" viewBox="0 0 48 48">
+            <path d="M18.9 35.7 7.7 24.5l2.15-2.15 9.05 9.05 19.2-19.2 2.15 2.15Z"/>
+        </symbol>
+
+        <symbol id="placeHolder" viewBox="0 0 48 48">
+            <path d="M 17.131 28.466 M 3.39 28.466 C 3.39 39.042 14.841 45.654 23.997 40.362 C 28.25 37.911 30.87 33.376 30.87 28.466 C 30.87 17.89 19.418 11.279 10.256 16.57 C 6.01 19.021 3.39 23.555 3.39 28.466 Z M 30.159 6.354 C 30.633 5.581 31.107 5.581 31.581 6.354 L 44.373 27.248 C 44.848 28.021 44.612 28.409 43.664 28.409 L 18.077 28.409 C 17.131 28.409 16.893 28.021 17.367 27.248 Z"></path>
+        </symbol>
+
+        <symbol id="moreIcon" viewBox="0 0 48 48">
+            <path d="M24 40q-1 0-1.7-.7t-.7-1.7q0-1 .7-1.7t1.7-.7q1 0 1.7.7t.7 1.7q0 1-.7 1.7T24 40Zm0-13.6q-1 0-1.7-.7t-.7-1.7q0-1 .7-1.7t1.7-.7q1 0 1.7.7t.7 1.7q0 1-.7 1.7t-1.7.7Zm0-13.6q-1 0-1.7-.7t-.7-1.7q0-1 .7-1.7T24 8q1 0 1.7.7t.7 1.7q0 1-.7 1.7t-1.7.7Z"/>
+        </symbol>
+
+    </svg>
+
+</body>
+
+</html>

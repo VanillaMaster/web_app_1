@@ -1,0 +1,205 @@
+html{
+    background: var(--background-color);
+    color: var(--text-and-icon-color);
+    fill: var(--text-and-icon-color);;
+}
+
+body,html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#app{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: sans-serif;
+
+    position: relative;
+}
+
+.svgTempaltes{
+    display: none;
+}
+
+.btn2{
+    background-color: var(--prime-color);
+    width: 140px;
+    height: 140px;
+    border-radius: 100vmax;
+
+    margin: 10px;
+}
+
+.btn2 button{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+
+    color: unset;
+}
+
+.btn2 svg{
+    width: 71%;
+    height: 71%;
+}
+
+.large-btn2{
+    background-color: var(--prime-color);
+    width: 320px;
+    height: 70px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.large-btn2 button{
+    user-select: none;
+    font-size: 50px;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+
+    color: unset;
+}
+
+[path="/"] .home{
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*bottom-nav*/
+.nav-bar{
+    height: var(--bottom-bar-height);
+    width: 100%;
+
+    --background-color: var(--prime-color);
+
+    display: flex;
+    align-items: center;
+
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+
+.nav-bar>container-ripple{
+    height: 100%;
+    width: 100%;
+}
+
+.nav-bar>container-ripple>button{
+    font-size: initial;
+    user-select: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+
+    color: unset;
+}
+
+/**/
+.list{
+    padding: 0 0.5em;
+}
+
+.list .title{
+    margin: 0;
+}
+
+.list .text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list img[slot=icon]{
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 3em;
+    border-radius: 50%;
+}
+
+.list .icon{
+    aspect-ratio: 1/1;
+    width: 3em;
+    position: relative;
+}
+
+.list .icon>img{
+    position: absolute;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.list .icon>svg{
+    position: absolute;
+    border-radius: 50%;
+    height: 80%;
+    width: 80%;
+    padding: 10%;
+    fill: #c7c5cb;
+    background: #ebecec;
+}
+
+.list .icon .selected{
+    transform: rotateY(180deg);
+}
+.list .icon .default{
+    transform: rotateY(0deg);
+}
+
+.list list-view-item[selected] .selected{
+    transform: rotateY(0deg);
+}
+.list list-view-item[selected] .default{
+    transform: rotateY(180deg);
+}
+
+.list .icon .selected,
+.list .icon .default{
+    backface-visibility: hidden;
+    transition: transform 500ms;
+}
+
+.list .list-item-wrapper{
+    border-radius: 1em;
+    touch-action: pan-y;
+}
+
+/**/
+
+.popupmenu{
+    margin: 0 auto;
+    --ripple-speed: 100ms;
+    touch-action: pan-y;
+
+    width: max-content;
+}
+
+.popupmenu menu-container{
+    height: 2em;
+    width: 2em;
+    display: block;
+    font-size: 17px;
+}
+.popupmenu container-ripple{
+    --ripple-speed: 150ms;
+    padding: 0.75em;
+}
+
+*:not(:defined){
+    background-color: red;
+}

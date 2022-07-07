@@ -1,0 +1,85 @@
+.container{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+slot[name=icon]::slotted(*) {
+    height: 100%;
+    width: 100%;
+}
+
+.popup{
+    bottom: calc(100% - var(--bottom));
+    right: calc(100% - var(--right));
+
+    top: var(--top);
+    left: var(--left);
+
+    z-index: 1;
+    position: fixed;
+    pointer-events: all;
+    background-color: var(--prime-color);
+    border-radius: 0.25em;
+    padding: 0.25em 0;
+
+    overflow: hidden;
+    display: none;
+
+    animation-duration: 50ms;
+    animation-timing-function: linear;
+
+    transform-origin: top right;
+
+    width: max-content;
+    height: max-content;
+
+    border: 1px solid var(--secondary-color);
+}
+
+.popup[active]{
+    display: block;
+    animation-name: menu-apearing;
+}
+
+.popup[hidden]{
+    display: block;
+    visibility: hidden;
+}
+
+.popup[disappearing]{
+    display: block;
+    animation-name: menu-disappearing;
+}
+
+@keyframes menu-apearing {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  
+    75%{
+      
+    }
+  
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes menu-disappearing {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+  
+    75%{
+      
+    }
+  
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}

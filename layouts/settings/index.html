@@ -1,0 +1,20 @@
+<layout-container path="/settings/">
+            
+    <layout-view name="smth" active>
+        <div>
+            layout 2_1
+        </div>
+    </layout-view>
+
+    <nav slot="controll-top" class="top-nav">
+        <container-ripple class="button" ripple-type="circumcircle">
+            <button onclick="window.router.goback()">
+                <svg><use href="#backIcon"></use></svg>
+            </button>
+        </container-ripple>
+        <span class="title">
+            layout 2 Title
+        </span>
+    </nav>
+
+</layout-container>

@@ -1,0 +1,111 @@
+:host{
+    touch-action: none;
+    position: relative;
+    display: block;
+    user-select: none;
+}
+
+.container{
+    --sqrt2:1.41421356237;
+
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    place-items: center;
+
+    position: relative;
+
+    pointer-events: none;
+}
+
+.content{
+    overflow: hidden;
+    /*
+    max-height: 100%;
+    max-width: 100%;
+    */
+    height: 100%;
+    width: 100%;
+}
+
+.ripple{
+    position: absolute;
+    inset: 0;
+}
+
+:host([ripple-type=circumcircle]) .ripple{
+    clip-path: circle(calc(100% / var(--sqrt2)));
+}
+
+:host([ripple-type=""]),
+:host(:not([ripple-type])){
+    overflow: hidden;
+}
+
+:host([isolate]){
+   isolation: isolate;
+}
+
+.effect-ripple{
+  --size: 0;
+  position: absolute;
+  
+  top: var(--y);
+  left: var(--x);
+  
+  min-height: calc(100% * var(--sqrt2) * 2);
+  min-width: calc(100% * var(--sqrt2) * 2);
+  aspect-ratio: 1/1;
+
+  border-radius: 100%;
+  
+  transform: translate(-50%,-50%);
+  
+  pointer-events: none;
+
+  transition: opacity var(--ripple-fadeout);
+}
+
+.effect-ripple::after{
+  height: 100%;
+  width: 100%;
+  content: "";
+  display: block;
+  border-radius: 100vmax;
+
+  inset: 0;
+  margin: auto;
+  position: absolute;
+  
+  
+  animation-name: ripple;
+  animation-duration: var(--ripple-speed);
+  animation-timing-function: linear;
+  
+
+  background-color: var(--ripple-color);
+}
+
+.effect-ripple[disappearing]{
+  opacity: 0;
+}
+
+
+@keyframes ripple {
+  from {
+    height: 0;
+    width: 0;
+
+    opacity: 0;
+  }
+
+  5%{
+    opacity: 1;
+  }
+
+  to {
+    height: 100%;
+    width: 100%;
+  }
+}
