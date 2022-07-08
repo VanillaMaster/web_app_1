@@ -14,6 +14,17 @@
     overflow: hidden;
 }
 
+.overlay {
+    position: absolute;
+    inset: 0px;
+    background-color: var(--touch-prevent-layer-color,transparent);
+    display: none;
+}
+
+:host([locked]) .overlay{
+    display: block;
+}
+
 ::slotted([slot="controll-bottom"]){
     border-top: 1px solid var(--secondary-color);
 }

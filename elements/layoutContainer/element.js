@@ -13,6 +13,14 @@ class LayoutContainer extends HTMLElement {
     }
     load(){
         const fragment = LayoutContainer.template.cloneNode(true);
+
+        fragment.querySelector(".overlay").addEventListener("pointerdown",()=>{
+            this.#clickListeners.forEach((elem)=>{
+                elem.resolve(elem.value);
+            })
+            this.unLock();
+        });
+
         this.#shadow = this.attachShadow({mode:'open'});
         this.#shadow.adoptedStyleSheets = [LayoutContainer.style];
         this.#shadow.append(fragment);
@@ -46,36 +54,93 @@ class LayoutContainer extends HTMLElement {
     }
 
     hide(opt,useAnimation = true){
-        if (!this.#isShown) {return;}
-        this.#isShown = false;
-        if (!useAnimation) {this.removeAttribute("active");return;}
-        let className = opt ? "disappearing-grow": "disappearing-shrink";
-        const f = (e)=>{
-            if (e.animationName == className) {
-                this.removeEventListener("animationend",f);
-                this.classList.remove(className);
+        return new Promise((resolve,reject)=>{
+            if (!this.#isShown) {
+                reject();
+                return;
             }
-        }
-        this.addEventListener("animationend",f);
-        this.classList.add(className);
-        this.removeAttribute("active");
+            this.#isShown = false;
+            if (!useAnimation) {
+                this.removeAttribute("active");
+                reject();
+                return;
+            }
+
+            let className = opt ? "disappearing-grow": "disappearing-shrink";
+            const f = (e)=>{
+                if (e.animationName == className) {
+                    this.removeEventListener("animationend",f);
+                    this.classList.remove(className);
+                    resolve();
+                }
+            }
+
+            this.addEventListener("animationend",f);
+            this.classList.add(className);
+            this.removeAttribute("active");
+        })
     }
 
     show(opt,useAnimation = true){
-        if (this.#isShown) {return;}
-        this.#isShown = true;
-        if (!useAnimation) {this.setAttribute("active","");return;}
-        let className = opt ? "appearing-grow": "appearing-shrink";
-        const f = (e)=>{
-            if (e.animationName == className) {
-                this.removeEventListener("animationend",f);
-                this.classList.remove(className);
+        return new Promise((resolve,reject)=>{
+            if (this.#isShown) {
+                reject();
+                return;
             }
-        };
-        this.addEventListener("animationend",f)
-        this.classList.add(className);
-        this.setAttribute("active","");
+            this.#isShown = true;
+            if (!useAnimation) {
+                this.setAttribute("active","");
+                resolve();
+                return;
+            }
+    
+            let className = opt ? "appearing-grow": "appearing-shrink";
+            const f = (e)=>{
+                if (e.animationName == className) {
+                    this.removeEventListener("animationend",f);
+                    this.classList.remove(className);
+                    resolve();
+                }
+            };
+    
+            this.addEventListener("animationend",f)
+            this.classList.add(className);
+            this.setAttribute("active","");
+        })
     }
+
+    lock(){
+        if (!this.#isLocked) {
+            this.setAttribute("locked","")
+            this.#isLocked = true;   
+        }
+    }
+    unLock(){
+        if (this.#isLocked) {
+            this.removeAttribute("locked");
+            this.#isLocked = false;   
+        }
+    }
+    #isLocked = false;
+
+    awaitClickAndLock(resolveValue){
+
+        let data = {};
+        data["promise"] = new Promise((resolve)=>{
+            data["resolve"] = resolve;
+        });
+        data["value"] = resolveValue;
+        data["promise"].then(()=>{
+            this.#clickListeners.delete(data);
+        })
+        this.#clickListeners.add(data);
+
+        this.lock();
+
+        return {promise:data.promise,resolve:data.resolve};
+
+    }
+    #clickListeners = new Set();
 
 }
 

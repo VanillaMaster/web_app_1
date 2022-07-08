@@ -9,13 +9,19 @@
     <link rel="manifest" href="/manifest/manifest.webmanifest">
     <meta name="theme-color" content="#f69435"/>
 
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./layout.css">
-    <link rel="stylesheet" href="./themes.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/themes.css">
     
-    <script src="./src/router.js"></script>
+    <script src="/src/router.js"></script>
 
     <script type="module" src="/elements/index.js"></script>
+
+    <script>
+        if (window.location.pathname === "/" && "serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/sw.js");
+        }
+    </script>
 
 </head>
 <body>

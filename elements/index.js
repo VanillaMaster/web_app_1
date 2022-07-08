@@ -22,4 +22,6 @@ modules.forEach((module_)=>{
 
 console.log(modules);
 
-window.router.goto("/")
+
+// this should depends on initial loaction
+window.router.goto(window.location.pathname)

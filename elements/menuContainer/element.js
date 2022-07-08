@@ -54,9 +54,13 @@ class MenuContainer extends HTMLElement {
 
     showPopUp(){
         if (this.#isShown) {return}
-        if (this.#app === null) {this.#app = document.getElementById("app")}
+        if (this.#layout === null) {
+            let layoutID = window.getComputedStyle(this).getPropertyValue('--data-layout-container-id');
+            this.#layout = document.querySelector(`[data-id=${layoutID}]`);
+            console.log(this.#layout);
+        }
 
-        let p = this.#app.awaitClickAndLock(true);
+        let p = this.#layout.awaitClickAndLock(true);
 
         this.show();
 
@@ -66,14 +70,14 @@ class MenuContainer extends HTMLElement {
             this.#resolve = null;
         })
     }
-    #app = null;
+    #layout = null;
     #resolve = null;
     hidePopUp(){
         if (!this.#isShown) {return}
         if (this.#resolve === null) {return}
         this.#resolve(false);
         this.#resolve = null;
-        this.#app.unLock();
+        this.#layout.unLock();
         this.hide();
     }
 

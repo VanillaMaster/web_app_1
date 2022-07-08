@@ -57,12 +57,16 @@ class Router{
         window.history.back();
     }
 
-    #processState(e){
+    async #processState(e){
         //console.log(e);
         //console.log(e.state.depth > this.#depth);
 
+        if (!(this.#layouts.has(e.currentTarget.location.pathname))) {if ( !(await this.loadLayout(e.currentTarget.location.pathname)) ) {return}}
+
         let prevLayout = this.#layouts.get(this.#activeLayout);
         let nextLayout = this.#layouts.get(e.currentTarget.location.pathname);
+
+        console.log(e.currentTarget.location.pathname);
 
         if (e.state.depth > this.#depth) {
             //forward
